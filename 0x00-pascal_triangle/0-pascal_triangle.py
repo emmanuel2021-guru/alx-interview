@@ -23,10 +23,11 @@ def pascal_triangle(n):
                 pascal_triangle_cpy = []
                 for j in range(i):
                     if j == 0:
-                        pascal_triangle_cpy.append(pascal_triangle[i-1][j])
+                        pascal_triangle_cpy.append(pascal_triangle[i - 1][j])
                     else:
-                        pascal_triangle_cpy.append(pascal_triangle[i-1][j-1]
-                                                   + pascal_triangle[i-1][j])
+                        pascal_triangle_cpy.append(pascal_triangle[i - 1]
+                                                   [j - 1] +
+                                                   pascal_triangle[i - 1][j])
                 pascal_triangle_cpy.append(1)
                 pascal_triangle.append(pascal_triangle_cpy)
     return pascal_triangle
