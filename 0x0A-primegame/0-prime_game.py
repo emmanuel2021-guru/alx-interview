@@ -1,32 +1,34 @@
 #!/usr/bin/python3
+
+"""This module contains functions to determine who the winner of
+each game is in a prime number game"""
+
+
+def is_prime(num):
+    """This function checks if a number is prime"""
+    if num < 2:
+        return False
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+
 def isWinner(x, nums):
-    def is_prime(num):
-        if num < 2:
-            return False
-        for i in range(2, int(num ** 0.5) + 1):
-            if num % i == 0:
-                return False
-        return True
-
-    def can_win(n):
-        if n == 1:
-            return False
-        primes = [i for i in range(2, n + 1) if is_prime(i)]
-        # Maria wins if the number of primes is even, otherwise Ben wins
-        return len(primes) % 2 == 0
-
+    """This function determines who the winner of each game is"""
     maria_wins = 0
     ben_wins = 0
 
     for n in nums:
-        if can_win(n):
+        primes_count = sum(1 for i in range(1, n + 1) if is_prime(i))
+        if primes_count % 2 == 0:
             ben_wins += 1
         else:
             maria_wins += 1
 
-    if maria_wins == ben_wins:
-        return None
-    elif maria_wins > ben_wins:
+    if maria_wins > ben_wins:
         return "Maria"
-    else:
+    elif maria_wins < ben_wins:
         return "Ben"
+    else:
+        return None
