@@ -5,6 +5,9 @@ each game is in a prime number game"""
 
 
 def isWinner(x, nums):
+    """This function determines who the winner of each game
+    is in a prime number game
+    """
     if x < 1 or not nums:
         return None
 
